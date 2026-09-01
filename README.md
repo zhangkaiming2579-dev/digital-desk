@@ -2,6 +2,8 @@
 
 Digital Desk turns a vault into a calm, editorial home workspace. Create notes and nested projects, reopen recent files, keep active work visible, and optionally bring your WeRead shelf and personal highlights back into local Markdown.
 
+[中文安装与使用指南](docs/zh-CN.md)
+
 ![Digital Desk preview](docs/digital-desk-preview.jpg)
 
 ## What it does
@@ -30,8 +32,6 @@ Digital Desk requires Obsidian 1.13.0 or later.
 The initializer creates missing folders and starter files. Existing files and folders remain in place.
 
 ## Install from Obsidian
-
-After the plugin is accepted into the Community directory:
 
 1. Open **Settings → Community plugins → Browse**.
 2. Search for **Digital Desk**.
@@ -95,6 +95,6 @@ Digital Desk 是一个面向创作者的 Obsidian 首页工作台。安装一个
 
 首次启用后，跟随内置向导选择自己的目录并建立工作台。插件会补充缺失目录和起始文件，并保留现有内容。更多选项位于 **设置 → 第三方插件 → Digital Desk**。
 
-要求 Obsidian 1.13.0 或更高版本。插件进入社区目录后，可以在 **设置 → 第三方插件 → 浏览** 中搜索 **Digital Desk** 并安装。
+要求 Obsidian 1.13.0 或更高版本。可以在 **设置 → 第三方插件 → 浏览** 中搜索 **Digital Desk** 并安装。完整步骤见[中文安装与使用指南](docs/zh-CN.md)。
 
 微信读书属于可选功能。启用后，插件会访问腾讯微信读书接口，读取书架、阅读统计与个人划线，并把划线写入你指定的 Markdown 文件。密钥保存在 Obsidian 的安全密钥存储中；项目本身没有中转服务器、广告或遥测。
