@@ -1,0 +1,36 @@
+{
+  "name": "digital-desk",
+  "version": "0.1.0",
+  "description": "An editorial home dashboard for Obsidian creators.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "obsidian",
+    "dashboard",
+    "homepage",
+    "creator-workspace",
+    "weread"
+  ],
+  "author": "KM",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^22.15.17",
+    "builtin-modules": "latest",
+    "esbuild": "0.25.5",
+    "eslint": "^9.39.4",
+    "eslint-plugin-obsidianmd": "^0.4.0",
+    "globals": "^17.6.0",
+    "jiti": "^2.6.1",
+    "obsidian": "latest",
+    "tslib": "latest",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.59.1"
+  }
+}

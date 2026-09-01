@@ -1,0 +1,10 @@
+{
+  "id": "digital-desk",
+  "name": "Digital Desk",
+  "version": "0.1.0",
+  "minAppVersion": "1.13.0",
+  "description": "Start work from one calm dashboard: create notes and projects, reopen recent files, track active work, and optionally sync WeRead highlights.",
+  "author": "KM",
+  "authorUrl": "https://github.com/zhangkaiming2579-dev",
+  "isDesktopOnly": false
+}

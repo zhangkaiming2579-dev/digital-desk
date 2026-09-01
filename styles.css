@@ -1,0 +1,686 @@
+/* Digital Desk — editorial workspace */
+.digital-desk-view {
+  --dd-ink: #171813;
+  --dd-soft-ink: #4d5047;
+  --dd-muted: #787b72;
+  --dd-paper: #f2efe5;
+  --dd-panel: rgba(255, 253, 246, 0.8);
+  --dd-panel-strong: rgba(255, 254, 249, 0.96);
+  --dd-line: rgba(41, 43, 35, 0.14);
+  --dd-orange: #dd9326;
+  --dd-green: #658c75;
+  --dd-blue: #557f93;
+  --dd-rust: #a76147;
+  --dd-shadow: 0 22px 70px rgba(67, 54, 30, 0.1);
+  --dd-shadow-soft: 0 8px 28px rgba(67, 54, 30, 0.07);
+  --dd-display: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+  --dd-body: "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  height: 100%;
+  overflow-y: auto;
+  background:
+    linear-gradient(90deg, var(--dd-line) 1px, transparent 1px) 0 0 / 52px 52px,
+    linear-gradient(var(--dd-line) 1px, transparent 1px) 0 0 / 52px 52px,
+    radial-gradient(circle at 9% 0%, color-mix(in srgb, var(--dd-orange) 14%, transparent), transparent 28%),
+    radial-gradient(circle at 94% 9%, color-mix(in srgb, var(--dd-green) 13%, transparent), transparent 27%),
+    var(--dd-paper);
+  color: var(--dd-ink);
+  font-family: var(--dd-body);
+}
+
+.theme-dark .digital-desk-view {
+  --dd-ink: #eee9dd;
+  --dd-soft-ink: #cbc7ba;
+  --dd-muted: #a5a59c;
+  --dd-paper: #11130f;
+  --dd-panel: rgba(28, 30, 24, 0.82);
+  --dd-panel-strong: rgba(34, 36, 29, 0.96);
+  --dd-line: rgba(239, 233, 216, 0.12);
+  --dd-orange: #eda947;
+  --dd-green: #83aa90;
+  --dd-blue: #76a4b8;
+  --dd-rust: #ce8061;
+  --dd-shadow: 0 24px 72px rgba(0, 0, 0, 0.34);
+  --dd-shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.23);
+}
+
+.digital-desk-page {
+  width: min(1500px, calc(100% - clamp(32px, 6vw, 96px)));
+  margin: 0 auto;
+  padding: clamp(34px, 5vw, 70px) 0 80px;
+}
+
+.digital-desk-view button {
+  color: inherit;
+  font: inherit;
+}
+
+.digital-desk-hero {
+  position: relative;
+  min-height: 315px;
+  padding: clamp(32px, 5vw, 62px);
+  overflow: hidden;
+  border: 1px solid var(--dd-line);
+  border-radius: 30px 30px 30px 8px;
+  background:
+    linear-gradient(117deg, color-mix(in srgb, var(--dd-orange) 14%, transparent), transparent 44%),
+    linear-gradient(310deg, color-mix(in srgb, var(--dd-green) 13%, transparent), transparent 38%),
+    var(--dd-panel-strong);
+  box-shadow: var(--dd-shadow);
+}
+
+.digital-desk-hero::after {
+  position: absolute;
+  right: -30px;
+  bottom: -88px;
+  content: "D";
+  color: color-mix(in srgb, var(--dd-ink) 5%, transparent);
+  font-family: var(--dd-display);
+  font-size: clamp(15rem, 28vw, 28rem);
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.digital-desk-brand {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.digital-desk-quote-button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 1050px);
+  margin: clamp(34px, 5vw, 64px) 0 35px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.digital-desk-view .digital-desk-quote-button,
+.digital-desk-view .digital-desk-quote-button:hover,
+.digital-desk-view .digital-desk-quote-button:focus,
+.digital-desk-view .digital-desk-quote-button:active {
+  outline: 0;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none;
+}
+
+.digital-desk-view .digital-desk-quote-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--dd-orange) 65%, transparent);
+  outline-offset: 8px;
+}
+
+.digital-desk-quote {
+  overflow: hidden;
+  font-family: var(--dd-display);
+  font-size: clamp(2.2rem, 4.2vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.16;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.digital-desk-quote-button:hover .digital-desk-quote {
+  color: color-mix(in srgb, var(--dd-ink) 80%, var(--dd-orange));
+  transform: translateX(4px);
+}
+
+.digital-desk-quote-source {
+  margin-top: 14px;
+  color: var(--dd-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.digital-desk-tagline {
+  position: relative;
+  z-index: 1;
+  color: var(--dd-muted);
+  font-size: 0.94rem;
+}
+
+.digital-desk-hero-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 18px;
+}
+
+.digital-desk-hero-links button {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--dd-orange) 70%, transparent);
+  background: transparent;
+  font-size: 0.84rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.digital-desk-hero-links svg,
+.digital-desk-action svg,
+.digital-desk-sync svg,
+.digital-desk-quick-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.digital-desk-actions {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(95px, 0.55fr) repeat(6, minmax(110px, 1fr));
+  gap: 9px;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--dd-line) 70%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--dd-panel-strong) 94%, transparent);
+  box-shadow: var(--dd-shadow-soft);
+  backdrop-filter: blur(14px);
+}
+
+.digital-desk-actions-label {
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.15em;
+}
+
+.digital-desk-action {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.digital-desk-action:hover {
+  transform: translateY(-2px);
+  border-color: var(--dd-line);
+  background: var(--dd-panel-strong);
+}
+
+.digital-desk-action.is-primary {
+  background: var(--dd-orange);
+  color: #fffaf0;
+}
+
+.digital-desk-action.is-secondary {
+  background: var(--dd-green);
+  color: #f8fff9;
+}
+
+.digital-desk-section {
+  margin-top: 38px;
+}
+
+.digital-desk-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.digital-desk-eyebrow,
+.digital-desk-panel-title > span,
+.digital-desk-subheading > span {
+  display: block;
+  color: var(--dd-blue);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.digital-desk-section-heading h2,
+.digital-desk-panel-title h3,
+.digital-desk-subheading h3 {
+  margin: 4px 0 0;
+  color: color-mix(in srgb, var(--dd-blue) 88%, var(--dd-ink));
+  font-family: var(--dd-body);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.digital-desk-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.digital-desk-recent {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 13px;
+  align-items: center;
+  min-height: 78px;
+  padding: 13px 17px;
+  overflow: hidden;
+  border: 1px solid var(--dd-line);
+  border-left: 3px solid var(--dd-orange);
+  border-radius: 14px;
+  background: var(--dd-panel);
+  box-shadow: var(--dd-shadow-soft);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.digital-desk-recent.is-1 { border-left-color: var(--dd-green); }
+.digital-desk-recent.is-2 { border-left-color: var(--dd-blue); }
+.digital-desk-recent:hover { transform: translateY(-2px); box-shadow: var(--dd-shadow); }
+
+.digital-desk-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid color-mix(in srgb, var(--dd-blue) 40%, transparent);
+  border-radius: 9px;
+  color: var(--dd-blue);
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.digital-desk-recent-copy { min-width: 0; }
+.digital-desk-recent-name,
+.digital-desk-reading-row-title {
+  overflow: hidden;
+  font-family: var(--dd-display);
+  font-size: 0.96rem;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.digital-desk-recent-path,
+.digital-desk-reading-row-meta {
+  margin-top: 4px;
+  overflow: hidden;
+  color: var(--dd-muted);
+  font-size: 0.66rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.digital-desk-recent-time {
+  color: var(--dd-orange);
+  font-size: 0.64rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.digital-desk-arrow svg { width: 16px; height: 16px; color: var(--dd-blue); }
+
+.digital-desk-reading {
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid var(--dd-line);
+  border-radius: 26px 26px 26px 7px;
+  background: color-mix(in srgb, var(--dd-panel) 88%, transparent);
+  box-shadow: var(--dd-shadow-soft);
+}
+
+.digital-desk-sync {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--dd-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--dd-orange);
+  cursor: pointer;
+}
+
+.digital-desk-sync.is-spinning svg { animation: dd-spin 800ms linear infinite; }
+@keyframes dd-spin { to { transform: rotate(360deg); } }
+
+.digital-desk-reading-empty {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 26px;
+  border: 1px dashed color-mix(in srgb, var(--dd-blue) 40%, transparent);
+  border-radius: 18px;
+}
+
+.digital-desk-reading-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 90px;
+  flex: 0 0 auto;
+  border-radius: 7px 14px 14px 7px;
+  background: linear-gradient(145deg, var(--dd-blue), var(--dd-rust));
+  color: white;
+  font-family: var(--dd-display);
+  font-weight: 800;
+}
+
+.digital-desk-reading-empty h3 { margin: 0 0 7px; font-family: var(--dd-display); font-size: 1.35rem; }
+.digital-desk-reading-empty p { margin: 0 0 12px; color: var(--dd-muted); }
+
+.digital-desk-reading-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.digital-desk-stat {
+  position: relative;
+  padding: 18px 20px;
+  overflow: hidden;
+  border: 1px solid var(--dd-line);
+  border-radius: 13px;
+  background: var(--dd-panel-strong);
+}
+
+.digital-desk-stat::after {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  content: "0" counter(dd-stat);
+  color: var(--dd-blue);
+  font-size: 0.6rem;
+  font-weight: 800;
+}
+
+.digital-desk-stat span { display: block; color: var(--dd-muted); font-size: 0.67rem; }
+.digital-desk-stat strong { display: block; margin-top: 8px; font-family: var(--dd-display); font-size: 1.7rem; }
+
+.digital-desk-subheading { margin-bottom: 13px; }
+.digital-desk-shelf {
+  display: flex;
+  gap: 15px;
+  padding: 3px 2px 14px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.digital-desk-book {
+  width: 154px;
+  flex: 0 0 154px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+
+.digital-desk-book-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 212px;
+  overflow: hidden;
+  border: 1px solid var(--dd-line);
+  border-radius: 10px 18px 18px 10px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--dd-blue) 52%, var(--dd-paper)), color-mix(in srgb, var(--dd-rust) 38%, var(--dd-paper)));
+  box-shadow: 7px 9px 18px rgba(30, 30, 20, 0.11);
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--dd-display);
+  font-size: 1.6rem;
+  transition: transform 180ms ease;
+}
+
+.digital-desk-book:hover .digital-desk-book-cover { transform: translateY(-4px) rotate(-0.6deg); }
+.digital-desk-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+.digital-desk-book-title { margin-top: 10px; overflow: hidden; font-family: var(--dd-display); font-size: 0.86rem; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+.digital-desk-book-author { margin-top: 3px; overflow: hidden; color: var(--dd-muted); font-size: 0.63rem; text-overflow: ellipsis; white-space: nowrap; }
+
+.digital-desk-reading-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.35fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.digital-desk-reading-panel {
+  min-height: 365px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid var(--dd-line);
+  border-radius: 19px;
+  background: var(--dd-panel);
+}
+
+.digital-desk-reading-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  width: 100%;
+  padding: 13px 3px;
+  border: 0;
+  border-bottom: 1px solid var(--dd-line);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.digital-desk-notes-panel { max-height: 490px; }
+.digital-desk-highlight-list { max-height: 385px; margin-top: 10px; overflow-y: auto; overscroll-behavior: contain; }
+.digital-desk-highlight {
+  display: block;
+  width: 100%;
+  padding: 15px 13px;
+  border: 0;
+  border-left: 2px solid var(--dd-orange);
+  border-bottom: 1px solid var(--dd-line);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.digital-desk-highlight:hover { background: color-mix(in srgb, var(--dd-orange) 6%, transparent); }
+.digital-desk-highlight-book { color: var(--dd-orange); font-size: 0.62rem; font-weight: 750; }
+.digital-desk-highlight blockquote { margin: 8px 0; padding: 0; border: 0; color: var(--dd-ink); font-family: var(--dd-display); font-size: 0.82rem; line-height: 1.65; }
+.digital-desk-highlight-source { color: var(--dd-muted); font-size: 0.6rem; }
+
+.digital-desk-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.digital-desk-project {
+  min-height: 200px;
+  padding: 29px 30px;
+  border: 1px solid var(--dd-line);
+  border-top: 3px solid var(--dd-orange);
+  border-radius: 18px;
+  background: var(--dd-panel);
+  box-shadow: var(--dd-shadow-soft);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 170ms ease, box-shadow 170ms ease;
+}
+
+.digital-desk-project.is-1 { border-top-color: var(--dd-green); }
+.digital-desk-project.is-2 { border-top-color: var(--dd-blue); }
+.digital-desk-project.is-3 { border-top-color: var(--dd-rust); }
+.digital-desk-project:hover { transform: translateY(-4px); box-shadow: var(--dd-shadow); }
+.digital-desk-project-kicker { color: var(--dd-orange); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em; }
+.digital-desk-project h3 { margin: 28px 0 11px; font-family: var(--dd-display); font-size: 1.35rem; }
+.digital-desk-project p { overflow: hidden; color: var(--dd-muted); font-size: 0.72rem; text-overflow: ellipsis; white-space: nowrap; }
+.digital-desk-project-open { display: block; margin-top: 28px; padding-bottom: 4px; border-bottom: 1px solid var(--dd-orange); font-size: 0.76rem; font-weight: 700; }
+
+.digital-desk-task-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  padding: 19px;
+  border: 1px solid var(--dd-line);
+  border-radius: 17px;
+  background: var(--dd-panel);
+}
+
+.digital-desk-task {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  padding: 11px 9px;
+  border: 0;
+  border-bottom: 1px solid var(--dd-line);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.digital-desk-task svg { width: 17px; height: 17px; color: var(--dd-green); }
+.digital-desk-task-clear { grid-column: 1 / -1; padding: 28px; color: var(--dd-muted); text-align: center; }
+
+.digital-desk-quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.digital-desk-quick-link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 17px;
+  border: 1px solid var(--dd-line);
+  border-radius: 12px;
+  background: var(--dd-panel);
+  cursor: pointer;
+}
+
+.digital-desk-empty {
+  width: 100%;
+  padding: 34px;
+  border: 1px dashed var(--dd-line);
+  border-radius: 15px;
+  color: var(--dd-muted);
+  text-align: center;
+}
+
+.digital-desk-empty p { margin: 0 0 12px; }
+.digital-desk-empty button,
+.digital-desk-reading-empty button { border-color: var(--dd-line); background: var(--dd-panel-strong); }
+.digital-desk-loading { padding: 42px; color: var(--dd-muted); text-align: center; }
+.digital-desk-loading.is-error { color: var(--text-error); }
+.digital-desk-muted { padding: 24px; color: var(--dd-muted); text-align: center; }
+
+.digital-desk-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding-top: 18px;
+  border-top: 1px solid var(--dd-line);
+  color: var(--dd-muted);
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.2em;
+}
+
+.digital-desk-settings-intro {
+  max-width: 700px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.digital-desk-settings textarea {
+  width: min(460px, 100%);
+  min-height: 90px;
+  font-family: var(--font-monospace);
+  font-size: 0.8rem;
+}
+
+.digital-desk-folder-suggestion {
+  position: relative;
+  padding-right: 78px;
+}
+
+.digital-desk-folder-name { font-weight: 700; }
+.digital-desk-folder-path { margin-top: 3px; color: var(--text-muted); font-size: 0.74rem; }
+.digital-desk-folder-usage { position: absolute; right: 2px; top: 50%; color: var(--text-accent); font-size: 0.68rem; transform: translateY(-50%); }
+.digital-desk-name-modal .setting-item:last-child,
+.digital-desk-confirm-modal .setting-item:last-child { border: 0; }
+
+.digital-desk-setup-modal {
+  width: min(720px, calc(100vw - 32px));
+  border: 1px solid color-mix(in srgb, var(--interactive-accent) 24%, var(--background-modifier-border));
+  border-radius: 22px 22px 22px 8px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--background-primary) 94%, transparent), color-mix(in srgb, var(--background-primary) 94%, transparent)),
+    repeating-linear-gradient(0deg, transparent 0 31px, color-mix(in srgb, var(--text-muted) 10%, transparent) 31px 32px),
+    repeating-linear-gradient(90deg, transparent 0 31px, color-mix(in srgb, var(--text-muted) 10%, transparent) 31px 32px);
+}
+
+.digital-desk-setup-modal .modal-content { padding: 30px 34px 26px; }
+.digital-desk-setup-kicker { color: var(--interactive-accent); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.2em; }
+.digital-desk-setup-modal h2 { margin: 13px 0 8px; font-family: ui-serif, "Songti SC", "Noto Serif SC", Georgia, serif; font-size: 2rem; }
+.digital-desk-setup-intro { max-width: 590px; margin: 0 0 19px; color: var(--text-muted); line-height: 1.7; }
+.digital-desk-setup-modal .setting-item { background: color-mix(in srgb, var(--background-primary) 86%, transparent); }
+.digital-desk-setup-modal .setting-item-control input { width: min(330px, 42vw); }
+.digital-desk-setup-actions { padding-top: 22px; border: 0; }
+
+@media (max-width: 620px) {
+  .digital-desk-setup-modal .modal-content { padding: 24px 20px 20px; }
+  .digital-desk-setup-modal .setting-item { align-items: stretch; flex-direction: column; gap: 8px; }
+  .digital-desk-setup-modal .setting-item-control,
+  .digital-desk-setup-modal .setting-item-control input { width: 100%; }
+}
+
+@media (max-width: 1100px) {
+  .digital-desk-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .digital-desk-actions-label { grid-column: 1 / -1; }
+  .digital-desk-recent-grid { grid-template-columns: 1fr; }
+  .digital-desk-reading-lower { grid-template-columns: 1fr; }
+  .digital-desk-notes-panel { max-height: 560px; }
+}
+
+@media (max-width: 760px) {
+  .digital-desk-page { width: calc(100% - 22px); padding-top: 14px; }
+  .digital-desk-hero { min-height: 280px; padding: 28px 24px; border-radius: 22px 22px 22px 7px; }
+  .digital-desk-quote { font-size: clamp(1.85rem, 9vw, 3rem); white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+  .digital-desk-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .digital-desk-action.is-quiet:last-child { display: none; }
+  .digital-desk-reading { padding: 17px; }
+  .digital-desk-reading-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .digital-desk-project-grid,
+  .digital-desk-task-panel,
+  .digital-desk-quick-links { grid-template-columns: 1fr; }
+  .digital-desk-project { min-height: 175px; padding: 24px; }
+  .digital-desk-reading-empty { align-items: flex-start; }
+  .digital-desk-reading-monogram { width: 52px; height: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digital-desk-view *,
+  .digital-desk-view *::before,
+  .digital-desk-view *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
